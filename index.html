@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>City Library Catalog</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+    <div class="site-header__top">
+        <h1 class="site-header__title">City Library Catalog</h1>
+        <p class="site-header__subtitle">Find and explore books in our collection</p>
+    </div>
+    <nav class="site-nav" aria-label="Main navigation">
+        <ul class="site-nav__list">
+            <li class="site-nav__item"><a href="#" class="site-nav__link site-nav__link--active">Catalog</a></li>
+            <li class="site-nav__item"><a href="#about" class="site-nav__link">About</a></li>
+            <li class="site-nav__item"><a href="#contacts" class="site-nav__link">Contacts</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="layout">
+    <section class="controls" aria-labelledby="controls-title">
+        <h2 id="controls-title" class="controls__title">Search catalog</h2>
+        <form class="controls__form" id="filter-form">
+            <div class="controls__field">
+                <label for="search-input" class="controls__label">Search by title or author</label>
+                <input
+                        type="text"
+                        id="search-input"
+                        class="controls__input"
+                        placeholder="Start typing a title or author name"
+                        autocomplete="off"
+                />
+            </div>
+            <div class="controls__field">
+                <label for="genre-select" class="controls__label">Genre</label>
+                <select id="genre-select" class="controls__select">
+                    <option value="all">All genres</option>
+                    <option value="fiction">Fiction</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="nonfiction">Non‑fiction</option>
+                    <option value="science">Science</option>
+                    <option value="history">History</option>
+                </select>
+            </div>
+            <div class="controls__field controls__field--inline">
+                <label class="controls__checkbox-label">
+                    <input type="checkbox" id="availability-checkbox" class="controls__checkbox" />
+                    Show only available books
+                </label>
+            </div>
+        </form>
+    </section>
+
+    <section class="catalog" aria-labelledby="catalog-title" aria-live="polite">
+        <header class="catalog__header">
+            <div>
+                <h2 id="catalog-title" class="catalog__title">Books</h2>
+                <p class="catalog__summary">
+                    <span id="results-count" class="catalog__count">0</span> books found
+                </p>
+            </div>
+            <button
+                    type="button"
+                    id="sort-year-button"
+                    class="catalog__sort-button"
+                    data-sort-direction="asc"
+            >
+                Sort by year ↑
+            </button>
+        </header>
+
+        <div class="catalog__grid" id="catalog-list">
+            <article
+                    class="book-card"
+                    data-title="The Great Gatsby"
+                    data-author="F. Scott Fitzgerald"
+                    data-genre="fiction"
+                    data-available="true"
+                    data-year="1925"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">The Great Gatsby</h3>
+                    <p class="book-card__author">F. Scott Fitzgerald</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">1925</span>
+                    <span class="book-card__genre">Fiction</span>
+                    <span class="book-card__status book-card__status--available">Available</span>
+                </p>
+                <p class="book-card__description">
+                    A portrait of the Jazz Age in all of its decadence and excess.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0743273565</p>
+                    <p>Pages: 180</p>
+                    <p>Shelf location: A1-03</p>
+                </div>
+            </article>
+
+            <article
+                    class="book-card"
+                    data-title="To Kill a Mockingbird"
+                    data-author="Harper Lee"
+                    data-genre="fiction"
+                    data-available="false"
+                    data-year="1960"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">To Kill a Mockingbird</h3>
+                    <p class="book-card__author">Harper Lee</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">1960</span>
+                    <span class="book-card__genre">Fiction</span>
+                    <span class="book-card__status book-card__status--unavailable">Checked out</span>
+                </p>
+                <p class="book-card__description">
+                    A novel about racial injustice and childhood in the Deep South.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0061120084</p>
+                    <p>Pages: 324</p>
+                    <p>Shelf location: A1-07</p>
+                </div>
+            </article>
+
+            <article
+                    class="book-card"
+                    data-title="A Brief History of Time"
+                    data-author="Stephen Hawking"
+                    data-genre="science"
+                    data-available="true"
+                    data-year="1988"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">A Brief History of Time</h3>
+                    <p class="book-card__author">Stephen Hawking</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">1988</span>
+                    <span class="book-card__genre">Science</span>
+                    <span class="book-card__status book-card__status--available">Available</span>
+                </p>
+                <p class="book-card__description">
+                    An overview of cosmology for a general audience.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0553380163</p>
+                    <p>Pages: 212</p>
+                    <p>Shelf location: S2-12</p>
+                </div>
+            </article>
+
+            <article
+                    class="book-card"
+                    data-title="Sapiens: A Brief History of Humankind"
+                    data-author="Yuval Noah Harari"
+                    data-genre="history"
+                    data-available="true"
+                    data-year="2011"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">Sapiens: A Brief History of Humankind</h3>
+                    <p class="book-card__author">Yuval Noah Harari</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">2011</span>
+                    <span class="book-card__genre">History</span>
+                    <span class="book-card__status book-card__status--available">Available</span>
+                </p>
+                <p class="book-card__description">
+                    A narrative of humanity's creation and evolution.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0062316110</p>
+                    <p>Pages: 498</p>
+                    <p>Shelf location: H3-05</p>
+                </div>
+            </article>
+
+            <article
+                    class="book-card"
+                    data-title="Clean Code"
+                    data-author="Robert C. Martin"
+                    data-genre="nonfiction"
+                    data-available="false"
+                    data-year="2008"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">Clean Code</h3>
+                    <p class="book-card__author">Robert C. Martin</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">2008</span>
+                    <span class="book-card__genre">Non‑fiction</span>
+                    <span class="book-card__status book-card__status--unavailable">Checked out</span>
+                </p>
+                <p class="book-card__description">
+                    A handbook of agile software craftsmanship.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0132350884</p>
+                    <p>Pages: 464</p>
+                    <p>Shelf location: IT1-01</p>
+                </div>
+            </article>
+
+            <article
+                    class="book-card"
+                    data-title="The Hobbit"
+                    data-author="J.R.R. Tolkien"
+                    data-genre="fantasy"
+                    data-available="true"
+                    data-year="1937"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">The Hobbit</h3>
+                    <p class="book-card__author">J.R.R. Tolkien</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">1937</span>
+                    <span class="book-card__genre">Fantasy</span>
+                    <span class="book-card__status book-card__status--available">Available</span>
+                </p>
+                <p class="book-card__description">
+                    A fantasy adventure that precedes the Lord of the Rings trilogy.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0547928227</p>
+                    <p>Pages: 300</p>
+                    <p>Shelf location: F2-09</p>
+                </div>
+            </article>
+
+            <article
+                    class="book-card"
+                    data-title="1984"
+                    data-author="George Orwell"
+                    data-genre="fiction"
+                    data-available="true"
+                    data-year="1949"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">1984</h3>
+                    <p class="book-card__author">George Orwell</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">1949</span>
+                    <span class="book-card__genre">Fiction</span>
+                    <span class="book-card__status book-card__status--available">Available</span>
+                </p>
+                <p class="book-card__description">
+                    A dystopian novel about a totalitarian regime and surveillance state.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0451524935</p>
+                    <p>Pages: 328</p>
+                    <p>Shelf location: F1-11</p>
+                </div>
+            </article>
+
+            <article
+                    class="book-card"
+                    data-title="The Pragmatic Programmer"
+                    data-author="Andrew Hunt"
+                    data-genre="nonfiction"
+                    data-available="true"
+                    data-year="1999"
+            >
+                <header class="book-card__header">
+                    <h3 class="book-card__title">The Pragmatic Programmer</h3>
+                    <p class="book-card__author">Andrew Hunt, David Thomas</p>
+                </header>
+                <p class="book-card__meta">
+                    <span class="book-card__year">1999</span>
+                    <span class="book-card__genre">Non‑fiction</span>
+                    <span class="book-card__status book-card__status--available">Available</span>
+                </p>
+                <p class="book-card__description">
+                    Practical tips and philosophies for software developers.
+                </p>
+                <button type="button" class="book-card__toggle-details">More details</button>
+                <div class="book-card__details" hidden>
+                    <p>ISBN: 978-0201616224</p>
+                    <p>Pages: 352</p>
+                    <p>Shelf location: IT1-02</p>
+                </div>
+            </article>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <section id="about" class="site-footer__section">
+        <h2 class="site-footer__title">About the library</h2>
+        <p class="site-footer__text">
+            The City Library provides free access to books, digital resources, and community events.
+        </p>
+    </section>
+    <section id="contacts" class="site-footer__section">
+        <h2 class="site-footer__title">Contacts</h2>
+        <p class="site-footer__text">123 Main Street, Your City</p>
+        <p class="site-footer__text">Phone: (000) 123-45-67</p>
+        <p class="site-footer__text">Email: info@citylibrary.example</p>
+    </section>
+    <p class="site-footer__copyright">© 2026 City Library</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
